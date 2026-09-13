@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { AppHeader } from './components/AppHeader';
-import { TelemetryBar } from './components/TelemetryBar';
 import { RequestForm } from './components/RequestForm';
 import { RequestList } from './components/RequestList';
 
@@ -16,8 +15,6 @@ export const App: React.FC = () => {
       <AppHeader />
 
       <div className="app-viewport">
-        <TelemetryBar />
-
         {/* Mobile Collapsible Submit Drawer */}
         <details className="mobile-submit-drawer">
           <summary className="drawer-summary">
@@ -39,7 +36,7 @@ export const App: React.FC = () => {
               >
                 +
               </span>
-              <span style={{ color: 'var(--text-primary)' }}>Submit New Request</span>
+              <span style={{ color: 'var(--text-primary)' }}>New Request</span>
             </div>
             <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--text-muted)' }}>
               expand_more
@@ -50,7 +47,7 @@ export const App: React.FC = () => {
           </div>
         </details>
 
-        {/* Main 2-Panel Engineering Console */}
+        {/* Main 2-Panel View */}
         <main className="main-split-grid">
           <aside className="desktop-submit-aside">
             <RequestForm onTicketSubmitted={handleTicketSubmitted} />
@@ -59,48 +56,6 @@ export const App: React.FC = () => {
             <RequestList refreshTrigger={refreshTrigger} onTicketCreated={handleTicketSubmitted} />
           </section>
         </main>
-
-        {/* Lower 3 Telemetry Cards */}
-        <div className="telemetry-cards-grid">
-          <div className="telemetry-card">
-            <div className="telemetry-card-header">
-              <span className="telemetry-card-title">Heap Strategy</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
-                data_array
-              </span>
-            </div>
-            <span className="telemetry-card-metric">C++17 std::priority_queue</span>
-            <p className="telemetry-card-desc">
-              O(log n) insertions with lockless double buffer for tier-1 incidents.
-            </p>
-          </div>
-
-          <div className="telemetry-card">
-            <div className="telemetry-card-header">
-              <span className="telemetry-card-title">Automated Routing</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
-                alt_route
-              </span>
-            </div>
-            <span className="telemetry-card-metric">Confidence Score &gt;= 0.92</span>
-            <p className="telemetry-card-desc">
-              Tickets automatically bind to specialized pods within 4ms of receipt.
-            </p>
-          </div>
-
-          <div className="telemetry-card">
-            <div className="telemetry-card-header">
-              <span className="telemetry-card-title">Dead-Letter Status</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
-                check_circle
-              </span>
-            </div>
-            <span className="telemetry-card-metric">Quarantine Empty</span>
-            <p className="telemetry-card-desc">
-              Zero unparseable payloads in Kafka fallback buffer over the past 24h.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );
