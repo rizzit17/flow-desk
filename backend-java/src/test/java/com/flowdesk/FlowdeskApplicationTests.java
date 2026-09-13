@@ -15,7 +15,7 @@ class FlowdeskApplicationTests {
     private RequestService requestService;
 
     @Test
-    void testCreateTicketWithClassification() {
+    void testCreateTicketWithClassificationAndPriority() {
         TicketRequest ticket = requestService.createTicket(
             "VPN not connecting",
             "Cannot connect to corp VPN since this morning, blocking all work",
@@ -26,5 +26,10 @@ class FlowdeskApplicationTests {
         assertEquals("IT_INFRASTRUCTURE", ticket.getCategory());
         assertNotNull(ticket.getUrgencyScore());
         assertTrue(ticket.getUrgencyScore() > 0);
+
+        assertNotNull(ticket.getFinalPriority(), "finalPriority must not be null");
+        assertTrue(ticket.getFinalPriority() >= 1 && ticket.getFinalPriority() <= 5);
+        assertNotNull(ticket.getQueuePosition(), "queuePosition must not be null");
+        assertTrue(ticket.getQueuePosition() >= 1);
     }
 }

@@ -14,10 +14,14 @@ public class RequestService {
 
     private final TicketRepository ticketRepository;
     private final ClassificationClient classificationClient;
+    private final PriorityEngineClient priorityEngineClient;
 
-    public RequestService(TicketRepository ticketRepository, ClassificationClient classificationClient) {
+    public RequestService(TicketRepository ticketRepository,
+                          ClassificationClient classificationClient,
+                          PriorityEngineClient priorityEngineClient) {
         this.ticketRepository = ticketRepository;
         this.classificationClient = classificationClient;
+        this.priorityEngineClient = priorityEngineClient;
     }
 
     public TicketRequest createTicket(String title, String description, String requesterId) {
@@ -40,6 +44,19 @@ public class RequestService {
             }
         } catch (Exception ex) {
             ticketRepository.logStep(id, "CLASSIFY", "FAILURE", ex.getMessage());
+        }
+
+        try {
+            int urgency = (ticket.getUrgencyScore() != null) ? ticket.getUrgencyScore() : 50;
+            String category = (ticket.getCategory() != null) ? ticket.getCategory() : "GENERAL";
+            PriorityEngineClient.PriorityResultDto priorityResult = priorityEngineClient.computePriority(id, urgency, category);
+            if (priorityResult != null) {
+                ticket.setFinalPriority(priorityResult.getFinalPriority());
+                ticket.setQueuePosition(priorityResult.getQueuePosition());
+                ticketRepository.logStep(id, "PRIORITIZE", "SUCCESS", "Priority: " + priorityResult.getFinalPriority() + ", Queue: " + priorityResult.getQueuePosition());
+            }
+        } catch (Exception ex) {
+            ticketRepository.logStep(id, "PRIORITIZE", "FAILURE", ex.getMessage());
         }
 
         ticketRepository.updateEnrichment(ticket);
