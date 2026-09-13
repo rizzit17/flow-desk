@@ -30,98 +30,96 @@ public class TicketRepository {
             request.setDescription(rs.getString("description"));
             request.setRequesterId(rs.getString("requester_id"));
             request.setCategory(rs.getString("category"));
-            
+
             int urgency = rs.getInt("urgency_score");
             if (!rs.wasNull()) {
                 request.setUrgencyScore(urgency);
             }
-            
+
             int priority = rs.getInt("final_priority");
             if (!rs.wasNull()) {
                 request.setFinalPriority(priority);
             }
-            
+
             int queue = rs.getInt("queue_position");
             if (!rs.wasNull()) {
                 request.setQueuePosition(queue);
             }
-            
+
             request.setRequesterDepartment(rs.getString("requester_department"));
             request.setRequesterManagerEmail(rs.getString("requester_manager_email"));
             request.setStatus(rs.getString("status"));
             request.setErrorDetail(rs.getString("error_detail"));
-            
+
             Timestamp created = rs.getTimestamp("created_at");
             if (created != null) {
                 request.setCreatedAt(created.toLocalDateTime());
             }
-            
+
             Timestamp updated = rs.getTimestamp("updated_at");
             if (updated != null) {
                 request.setUpdatedAt(updated.toLocalDateTime());
             }
-            
+
             return request;
         }
     };
 
     public void save(TicketRequest request) {
         String sql = """
-            INSERT INTO requests (
-                id, title, description, requester_id, category, urgency_score,
-                final_priority, queue_position, requester_department, requester_manager_email,
-                status, error_detail, created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """;
+                    INSERT INTO requests (
+                        id, title, description, requester_id, category, urgency_score,
+                        final_priority, queue_position, requester_department, requester_manager_email,
+                        status, error_detail, created_at, updated_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """;
         LocalDateTime now = LocalDateTime.now();
         request.setCreatedAt(now);
         request.setUpdatedAt(now);
         jdbcTemplate.update(sql,
-            request.getId(),
-            request.getTitle(),
-            request.getDescription(),
-            request.getRequesterId(),
-            request.getCategory(),
-            request.getUrgencyScore(),
-            request.getFinalPriority(),
-            request.getQueuePosition(),
-            request.getRequesterDepartment(),
-            request.getRequesterManagerEmail(),
-            request.getStatus(),
-            request.getErrorDetail(),
-            Timestamp.valueOf(now),
-            Timestamp.valueOf(now)
-        );
+                request.getId(),
+                request.getTitle(),
+                request.getDescription(),
+                request.getRequesterId(),
+                request.getCategory(),
+                request.getUrgencyScore(),
+                request.getFinalPriority(),
+                request.getQueuePosition(),
+                request.getRequesterDepartment(),
+                request.getRequesterManagerEmail(),
+                request.getStatus(),
+                request.getErrorDetail(),
+                Timestamp.valueOf(now),
+                Timestamp.valueOf(now));
     }
 
     public void updateEnrichment(TicketRequest request) {
         String sql = """
-            UPDATE requests SET
-                category = ?,
-                urgency_score = ?,
-                final_priority = ?,
-                queue_position = ?,
-                requester_department = ?,
-                requester_manager_email = ?,
-                status = ?,
-                error_detail = ?,
-                updated_at = ?
-            WHERE id = ?
-        """;
+                    UPDATE requests SET
+                        category = ?,
+                        urgency_score = ?,
+                        final_priority = ?,
+                        queue_position = ?,
+                        requester_department = ?,
+                        requester_manager_email = ?,
+                        status = ?,
+                        error_detail = ?,
+                        updated_at = ?
+                    WHERE id = ?
+                """;
         LocalDateTime now = LocalDateTime.now();
         request.setUpdatedAt(now);
         jdbcTemplate.update(sql,
-            request.getCategory(),
-            request.getUrgencyScore(),
-            request.getFinalPriority(),
-            request.getQueuePosition(),
-            request.getRequesterDepartment(),
-            request.getRequesterManagerEmail(),
-            request.getStatus(),
-            request.getErrorDetail(),
-            Timestamp.valueOf(now),
-            request.getId()
-        );
+                request.getCategory(),
+                request.getUrgencyScore(),
+                request.getFinalPriority(),
+                request.getQueuePosition(),
+                request.getRequesterDepartment(),
+                request.getRequesterManagerEmail(),
+                request.getStatus(),
+                request.getErrorDetail(),
+                Timestamp.valueOf(now),
+                request.getId());
     }
 
     public void updateStatus(String id, String status) {

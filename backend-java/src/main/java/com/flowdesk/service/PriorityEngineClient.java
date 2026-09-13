@@ -130,15 +130,5 @@ public class PriorityEngineClient {
         }
     }
 
-    private static class PriorityInput {
-        public String requestId;
-        public int urgencyScore;
-        public String category;
-
-        public PriorityInput(String requestId, int urgencyScore, String category) {
-            this.requestId = requestId;
-            this.urgencyScore = urgencyScore;
-            this.category = category;
-        }
-    }
+    private record PriorityInput(String requestId, int urgencyScore, String category) {}
 }
