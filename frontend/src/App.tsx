@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RequestForm } from './components/RequestForm';
+import { RequestList } from './components/RequestList';
 
 export const App: React.FC = () => {
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handleTicketSubmitted = () => {
+    setRefreshTrigger((prev) => prev + 1);
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -22,10 +29,10 @@ export const App: React.FC = () => {
 
       <main className="main-grid">
         <aside>
-          <RequestForm onTicketSubmitted={(id) => console.log('Ticket created:', id)} />
+          <RequestForm onTicketSubmitted={handleTicketSubmitted} />
         </aside>
         <section>
-          {/* RequestList will be wired here in next step */}
+          <RequestList refreshTrigger={refreshTrigger} />
         </section>
       </main>
     </div>
