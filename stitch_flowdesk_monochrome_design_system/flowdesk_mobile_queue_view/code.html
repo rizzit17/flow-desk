@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>FlowDesk Mobile</title>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#09090B',
+              card: '#121214',
+              surface: '#18181B',
+              border: '#27272A',
+              subtle: '#3F3F46',
+              muted: '#71717A',
+              light: '#A1A1AA',
+              white: '#FAFAFA'
+            }
+          },
+          fontFamily: {
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Base Layout & Mobile Styles -->
+<style data-purpose="mobile-ios-base">
+    /* iOS Safe Area handling */
+    body {
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      background-color: #09090B;
+    }
+    /* Thin hairline borders matching iOS dark aesthetics */
+    .hairline-border {
+      border-width: 0.5px;
+    }
+    /* Hide scrollbar for pills carousel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-brand-black text-brand-white font-sans antialiased min-h-screen flex flex-col justify-start">
+<!-- BEGIN: MainContainer -->
+<main class="w-full max-w-[430px] mx-auto flex flex-col px-4 pt-3 pb-8" data-purpose="mobile-viewport">
+<!-- BEGIN: iOSStatusBarPlaceholder -->
+<!-- Native visual balance spacer for dynamic island / notch -->
+<div aria-hidden="true" class="h-2 w-full mb-1"></div>
+<!-- END: iOSStatusBarPlaceholder -->
+<!-- BEGIN: TopHeader -->
+<header class="flex items-center justify-between pb-3 border-b border-brand-border" data-purpose="app-header">
+<div class="flex items-center gap-2.5">
+<!-- Minimalist geometric logo mark -->
+<div class="w-7 h-7 flex-shrink-0" data-purpose="brand-logo">
+<svg fill="none" height="28" viewbox="0 0 32 32" width="28" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#18181B" height="32" rx="7" stroke="#27272A" stroke-width="1.5" width="32"></rect>
+<path d="M9 10h14M9 16h9M9 22h5" stroke="#FAFAFA" stroke-linecap="round" stroke-width="2.2"></path>
+<circle cx="21" cy="20" fill="#FAFAFA" r="2"></circle>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold tracking-tight leading-none text-brand-white">FlowDesk</span>
+<span class="text-[10px] text-brand-muted tracking-wide mt-0.5 uppercase font-mono">Workflow Engine</span>
+</div>
+</div>
+<!-- Monochrome Status Pill -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-surface border border-brand-border">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-white animate-pulse"></span>
+<span class="text-[10px] font-mono uppercase tracking-wider text-brand-white font-medium">NOMINAL</span>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: MicroServiceStatusPills -->
+<!-- Horizontal scrollable status tags -->
+<section class="mt-3.5 -mx-4 px-4 overflow-x-auto no-scrollbar flex items-center gap-2" data-purpose="service-pills">
+<span class="flex-shrink-0 text-[11px] font-mono px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-light">
+        Java 17
+      </span>
+<span class="flex-shrink-0 text-[11px] font-mono px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-light">
+        FastAPI
+      </span>
+<span class="flex-shrink-0 text-[11px] font-mono px-2.5 py-1 rounded-md bg-brand-surface border border-brand-border text-brand-light">
+        C++ Heap
+      </span>
+<span class="flex-shrink-0 text-[11px] font-mono px-2.5 py-1 rounded-md bg-brand-white text-brand-black font-semibold border border-brand-white">
+        4 Queued
+      </span>
+</section>
+<!-- END: MicroServiceStatusPills -->
+<!-- BEGIN: CollapsibleNewRequest -->
+<!-- Accordion toggle & form for rapid mobile ticket dispatch -->
+<section class="mt-4 rounded-xl bg-brand-card border border-brand-border overflow-hidden" data-purpose="collapsible-submit-drawer">
+<details class="group">
+<summary class="flex items-center justify-between p-3.5 cursor-pointer list-none select-none active:bg-brand-surface transition-colors duration-150">
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-brand-white tracking-tight flex items-center justify-center w-5 h-5 rounded bg-brand-surface border border-brand-border">
+              +
+            </span>
+<span class="text-xs font-medium text-brand-white">Submit New Request</span>
+</div>
+<svg class="w-4 h-4 text-brand-muted transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</summary>
+<!-- Collapsible Content -->
+<div class="px-3.5 pb-3.5 pt-1 border-t border-brand-border/60 flex flex-col gap-3">
+<p class="text-[11px] text-brand-muted leading-relaxed">
+            Requests are auto-triaged and prioritized via the C++ max-heap scheduler.
+          </p>
+<!-- Input: Employee -->
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-mono uppercase text-brand-light" for="emp-id">Employee ID</label>
+<select class="w-full bg-brand-surface border border-brand-border text-xs rounded-lg px-2.5 py-2 text-brand-white focus:ring-1 focus:ring-brand-white focus:border-brand-white outline-none" id="emp-id">
+<option>E1023 — Jane Doe (Engineering)</option>
+<option>E1024 — Alex Vance (DevOps)</option>
+<option>E0942 — Chris Green (Operations)</option>
+</select>
+</div>
+<!-- Input: Issue Title -->
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-mono uppercase text-brand-light" for="issue-title">Issue Title</label>
+<input class="w-full bg-brand-surface border border-brand-border text-xs rounded-lg px-2.5 py-2 text-brand-white placeholder-brand-muted focus:ring-1 focus:ring-brand-white focus:border-brand-white outline-none" id="issue-title" placeholder="e.g. Cannot connect to corporate VPN" type="text"/>
+</div>
+<!-- Input: Description -->
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-mono uppercase text-brand-light" for="issue-desc">Detailed Description</label>
+<textarea class="w-full bg-brand-surface border border-brand-border text-xs rounded-lg px-2.5 py-2 text-brand-white placeholder-brand-muted focus:ring-1 focus:ring-brand-white focus:border-brand-white outline-none resize-none" id="issue-desc" placeholder="Symptoms, urgency signals, and scope..." rows="2"></textarea>
+</div>
+<!-- Dispatch Button -->
+<button class="w-full py-2.5 bg-brand-white text-brand-black text-xs font-semibold rounded-lg active:opacity-85 transition-opacity tracking-tight flex items-center justify-center gap-1.5 mt-1" type="button">
+<span>Enqueue Request</span>
+<span class="text-[10px] font-mono font-normal tracking-normal">→ C++ Heap</span>
+</button>
+</div>
+</details>
+</section>
+<!-- END: CollapsibleNewRequest -->
+<!-- BEGIN: QueueSectionHeader -->
+<div class="flex items-center justify-between mt-5 mb-2.5">
+<div>
+<h2 class="text-sm font-semibold tracking-tight text-brand-white">Operational Queue</h2>
+<p class="text-[10px] text-brand-muted font-mono mt-0.5">Live max-heap compute order</p>
+</div>
+<button class="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono rounded bg-brand-surface border border-brand-border text-brand-light active:text-brand-white">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Refresh</span>
+</button>
+</div>
+<!-- END: QueueSectionHeader -->
+<!-- BEGIN: TicketFeed -->
+<section class="flex flex-col gap-3" data-purpose="operational-cards-feed">
+<!-- BEGIN: TicketCard1 -->
+<article class="p-3.5 rounded-xl bg-brand-card border border-brand-border flex flex-col gap-2.5" data-purpose="queue-ticket">
+<!-- Card Top Bar: Title and Status Badges -->
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-xs font-semibold text-brand-white leading-snug">
+            Production database outage in US-East
+          </h3>
+<div class="flex items-center gap-1 flex-shrink-0">
+<span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-white">
+              P1
+            </span>
+<span class="text-[9px] font-mono font-medium px-1.5 py-0.5 rounded bg-brand-white text-brand-black uppercase">
+              PROCESSED
+            </span>
+</div>
+</div>
+<!-- Meta strip -->
+<div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10px] font-mono text-brand-muted">
+<span>Req: <strong class="text-brand-light font-normal">E1024</strong></span>
+<span>•</span>
+<span>IT_INFRA</span>
+<span>•</span>
+<span>Urgency: <strong class="text-brand-white font-medium">100/100</strong></span>
+<span>•</span>
+<span>#1</span>
+</div>
+<!-- Description body -->
+<p class="text-xs text-brand-light leading-relaxed">
+          Primary database cluster is down and blocking all customer transactions immediately.
+        </p>
+<!-- Department/Manager & Resolution Row -->
+<div class="pt-2 border-t border-brand-border/60 flex items-center justify-between text-[10px]">
+<div class="flex flex-col font-mono leading-tight">
+<span class="text-brand-muted">Security • f874c99c...</span>
+<span class="text-brand-light text-[9px] mt-0.5 truncate max-w-[170px]">security.lead@company.com</span>
+</div>
+<button class="px-3 py-1.5 bg-brand-surface hover:bg-brand-subtle text-brand-white border border-brand-border text-[11px] font-medium rounded-lg active:scale-95 transition-all">
+            Mark Resolved
+          </button>
+</div>
+</article>
+<!-- END: TicketCard1 -->
+<!-- BEGIN: TicketCard2 -->
+<article class="p-3.5 rounded-xl bg-brand-card border border-brand-border flex flex-col gap-2.5" data-purpose="queue-ticket">
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-xs font-semibold text-brand-white leading-snug">
+            VPN not connecting
+          </h3>
+<div class="flex items-center gap-1 flex-shrink-0">
+<span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-white">
+              P1
+            </span>
+<span class="text-[9px] font-mono font-medium px-1.5 py-0.5 rounded bg-brand-surface border border-brand-subtle text-brand-light uppercase">
+              PENDING
+            </span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10px] font-mono text-brand-muted">
+<span>Req: <strong class="text-brand-light font-normal">E1023</strong></span>
+<span>•</span>
+<span>IT_INFRA</span>
+<span>•</span>
+<span>Urgency: <strong class="text-brand-white font-medium">82/100</strong></span>
+<span>•</span>
+<span>#2</span>
+</div>
+<p class="text-xs text-brand-light leading-relaxed">
+          Cannot connect to corp VPN since this morning, blocking all work.
+        </p>
+<div class="pt-2 border-t border-brand-border/60 flex items-center justify-between text-[10px]">
+<div class="flex flex-col font-mono leading-tight">
+<span class="text-brand-muted">Engineering • 67e84829...</span>
+<span class="text-brand-light text-[9px] mt-0.5 truncate max-w-[170px]">manager@company.com</span>
+</div>
+<button class="px-3 py-1.5 bg-brand-surface hover:bg-brand-subtle text-brand-white border border-brand-border text-[11px] font-medium rounded-lg active:scale-95 transition-all">
+            Mark Resolved
+          </button>
+</div>
+</article>
+<!-- END: TicketCard2 -->
+<!-- BEGIN: TicketCard3 -->
+<article class="p-3.5 rounded-xl bg-brand-card border border-brand-border flex flex-col gap-2.5" data-purpose="queue-ticket">
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-xs font-semibold text-brand-white leading-snug">
+            Critical payment gateway failure
+          </h3>
+<div class="flex items-center gap-1 flex-shrink-0">
+<span class="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-brand-surface border border-brand-border text-brand-white">
+              P3
+            </span>
+<span class="text-[9px] font-mono font-medium px-1.5 py-0.5 rounded border border-brand-subtle text-brand-muted uppercase">
+              DEGRADED
+            </span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[10px] font-mono text-brand-muted">
+<span>Req: <strong class="text-brand-light font-normal">E0881</strong></span>
+<span>•</span>
+<span>FIN_OPS</span>
+<span>•</span>
+<span>Urgency: <strong class="text-brand-white font-medium">64/100</strong></span>
+<span>•</span>
+<span>#3</span>
+</div>
+<!-- Monochrome pipeline degradation notice box -->
+<div class="p-2 rounded bg-brand-surface border border-brand-border flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-brand-light"></div>
+<span class="text-[10px] font-mono text-brand-light leading-tight">
+            Pipeline Notice: SOAP fallback active; heap rebalance delayed by 120ms.
+          </span>
+</div>
+<div class="pt-2 border-t border-brand-border/60 flex items-center justify-between text-[10px]">
+<div class="flex flex-col font-mono leading-tight">
+<span class="text-brand-muted">Billing • 32a184c2...</span>
+<span class="text-brand-light text-[9px] mt-0.5 truncate max-w-[170px]">billing.lead@company.com</span>
+</div>
+<button class="px-3 py-1.5 bg-brand-surface hover:bg-brand-subtle text-brand-white border border-brand-border text-[11px] font-medium rounded-lg active:scale-95 transition-all">
+            Mark Resolved
+          </button>
+</div>
+</article>
+<!-- END: TicketCard3 -->
+</section>
+<!-- END: TicketFeed -->
+<!-- BEGIN: QuickFooter -->
+<footer class="mt-6 pt-3 border-t border-brand-border/50 text-center" data-purpose="footer-meta">
+<span class="text-[10px] font-mono text-brand-muted">
+        C++17 Heap Priority Scheduler • v2.4.0-prod
+      </span>
+</footer>
+<!-- END: QuickFooter -->
+</main>
+<!-- END: MainContainer -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="card-action-interactivity">
+    // Lightweight tactile feedback for mobile buttons
+    document.querySelectorAll('button').forEach((btn) => {
+      btn.addEventListener('touchstart', () => {
+        btn.classList.add('opacity-75');
+      }, { passive: true });
+      btn.addEventListener('touchend', () => {
+        btn.classList.remove('opacity-75');
+      }, { passive: true });
+    });
+  </script>
+<!-- END: InteractiveScripts -->
+</body></html>

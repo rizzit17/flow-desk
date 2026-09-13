@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'tertiary-container': '#e3e1ec', 'surface-container-low': '#1c1b1d', 'error': '#ffb4ab', 'secondary': '#c6c6cf', 'outline-variant': '#444748', 'on-tertiary-fixed-variant': '#46464e', 'on-tertiary-fixed': '#1a1b22', 'on-primary-fixed': '#1a1c1c', 'tertiary': '#ffffff', 'on-surface': '#e5e1e4', 'primary-fixed': '#e2e2e2', 'surface-container': '#201f22', 'on-error': '#690005', 'on-tertiary': '#2f3038', 'tertiary-fixed-dim': '#c6c5cf', 'on-secondary-fixed': '#1a1b22', 'on-surface-variant': '#c4c7c8', 'inverse-surface': '#e5e1e4', 'surface-bright': '#39393b', 'on-secondary-container': '#b4b4bd', 'on-background': '#e5e1e4', 'inverse-primary': '#5d5f5f', 'on-secondary': '#2f3037', 'surface-container-lowest': '#0e0e10', 'outline': '#8e9192', 'on-primary': '#2f3131', 'error-container': '#93000a', 'surface-dim': '#131315', 'surface': '#131315', 'background': '#131315', 'on-primary-fixed-variant': '#454747', 'surface-container-high': '#2a2a2c', 'secondary-container': '#45464e', 'secondary-fixed-dim': '#c6c6cf', 'tertiary-fixed': '#e3e1ec', 'primary-container': '#e2e2e2', 'on-primary-container': '#636565', 'on-secondary-fixed-variant': '#45464e', 'surface-variant': '#353437', 'on-tertiary-container': '#63646c', 'on-error-container': '#ffdad6', 'surface-tint': '#c6c6c7', 'surface-container-highest': '#353437', 'secondary-fixed': '#e2e1eb', 'inverse-on-surface': '#313032', 'primary-fixed-dim': '#c6c6c7', 'primary': '#ffffff' }, borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' }, spacing: { 'space-lg': '1.25rem', 'space-md': '0.75rem', 'space-sm': '0.5rem', 'margin': '1.5rem', 'gutter': '1rem', 'space-xs': '0.25rem', 'space-xl': '2rem', 'gutter-lg': '1.5rem', 'margin-mobile': '1rem' }, fontFamily: { 'body-md': ['JetBrains Mono'], 'headline-sm': ['Geist'], 'label-sm': ['JetBrains Mono'], 'body-sm': ['JetBrains Mono'], 'headline-md': ['Geist'], 'headline-xl': ['Geist'], 'body-lg': ['JetBrains Mono'], 'code-sm': ['JetBrains Mono'], 'label-md': ['JetBrains Mono'], 'headline-lg': ['Geist'] }, fontSize: { 'body-md': ['13px', { lineHeight: '20px', letterSpacing: '0em', fontWeight: '400' }], 'headline-sm': ['15px', { lineHeight: '20px', letterSpacing: '-0.015em', fontWeight: '500' }], 'label-sm': ['10px', { lineHeight: '12px', letterSpacing: '0.08em', fontWeight: '600' }], 'body-sm': ['12px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '400' }], 'headline-md': ['18px', { lineHeight: '24px', letterSpacing: '-0.02em', fontWeight: '500' }], 'headline-xl': ['32px', { lineHeight: '40px', letterSpacing: '-0.03em', fontWeight: '600' }], 'body-lg': ['14px', { lineHeight: '22px', letterSpacing: '-0.01em', fontWeight: '400' }], 'code-sm': ['11px', { lineHeight: '16px', letterSpacing: '0em', fontWeight: '400' }], 'label-md': ['11px', { lineHeight: '14px', letterSpacing: '0.06em', fontWeight: '500' }], 'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.025em', fontWeight: '600' }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface-container-lowest/95 backdrop-blur-md"><div class="h-16 w-full px-gutter-lg flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md min-w-max"><img alt="FlowDesk Geometric Logo Mark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XMq899ALJbzQ55KGyQLfZwMF3BdhlOXOOJ7UBUgQMFqxze03bnzDO7JyKmQNvAouIEKfcxomTmMg9D-YDLtRcvOFanJSYJKobx0I-WrNHaRIEcEE19uvaY3LB524Ls3MBqp8bACDcjwowc9Qr4GMCxWYkzTTTKqFfu6GJhI3CdO9eUGFW-zbaVc6mDd1IxYlblxy68w_JjZmoJK2I83_lH6E9LIg6u3_MTPv98Vu-dM9Wp23Kuqg5i_-w"/><div class="flex flex-col justify-center"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">FlowDesk</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 bg-surface-container-high text-on-surface-variant uppercase">v2.4-rt</span></div><span class="font-code-sm text-code-sm text-outline tracking-tight hidden sm:block">Multi-Service Workflow Automation Platform</span></div></div><div class="hidden 2xl:flex items-center gap-space-xs"><span class="font-code-sm text-code-sm px-space-sm py-1 bg-surface-container text-on-surface-variant">Java 17 / Spring Boot</span><span class="font-code-sm text-code-sm px-space-sm py-1 bg-surface-container text-on-surface-variant">Python / FastAPI</span><span class="font-code-sm text-code-sm px-space-sm py-1 bg-surface-container text-on-surface-variant">C++17 Heap Engine</span><span class="font-code-sm text-code-sm px-space-sm py-1 bg-surface-container text-on-surface-variant">Mock Legacy SOAP</span><span class="font-code-sm text-code-sm px-space-sm py-1 bg-surface-container-high text-primary font-bold">PRODUCTION • CLUSTER-01</span></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs font-code-sm text-code-sm px-space-sm py-1 bg-surface-container-low text-primary"><span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span><span>SYSTEM NOMINAL 99.98%</span></div><div class="hidden lg:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container text-on-surface-variant font-code-sm text-code-sm cursor-pointer hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[14px]">terminal</span><span>⌘K / Search</span></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden sm:block"><span class="font-label-md text-label-md text-primary font-bold leading-none">ENG-STAFF</span><span class="font-label-sm text-label-sm text-outline leading-none mt-0.5">tier-3-ops</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-lowest z-40 flex flex-col justify-between p-gutter"><div class="flex flex-col gap-space-lg"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider px-space-sm">Core Services</span><nav class="flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-bold"><a class="flex items-center justify-between px-space-sm py-space-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="live-workflow-orchestrator" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[16px]">schema</span><span class="font-label-md text-label-md">Workflow Pipeline</span></div><span class="font-code-sm text-code-sm text-outline">42/42</span></a><a aria-current="page" class="flex items-center justify-between px-space-sm py-space-sm transition-colors bg-primary text-on-primary font-bold" data-path="ticket-automation-hub" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[16px]">task_alt</span><span class="font-label-md text-label-md">Ticket Router</span></div><span class="font-code-sm text-code-sm px-1.5 bg-surface-container-high text-primary">1.2k</span></a><a class="flex items-center justify-between px-space-sm py-space-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="service-mesh-telemetry" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[16px]">hub</span><span class="font-label-md text-label-md">Service Mesh</span></div><span class="font-code-sm text-code-sm text-outline">0.4ms</span></a><a class="flex items-center justify-between px-space-sm py-space-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="heap-engine-diagnostics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[16px]">memory</span><span class="font-label-md text-label-md">C++17 Heap Diagnostics</span></div><span class="font-code-sm text-code-sm text-outline">99.9%</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider px-space-sm">Integrations</span><nav class="flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-bold"><a class="flex items-center justify-between px-space-sm py-space-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="legacy-soap-bridge" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[16px]">cable</span><span class="font-label-md text-label-md">Legacy SOAP Bridge</span></div><span class="font-code-sm text-code-sm text-outline">SYNC</span></a><a class="flex items-center justify-between px-space-sm py-space-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dead-letter-quarantine" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[16px]">report_problem</span><span class="font-label-md text-label-md">Dead-Letter Queue</span></div><span class="font-code-sm text-code-sm px-1.5 bg-error-container text-on-error-container font-bold">0</span></a></nav></div></div><div class="p-space-sm bg-surface-container-low flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-code-sm text-code-sm text-outline">HEAP USE</span><span class="font-code-sm text-code-sm text-primary font-bold">1.42 GB / 8.00 GB</span></div><div class="w-full h-1 bg-surface-container-high overflow-hidden"><div class="h-full bg-primary w-[18%]"></div></div><div class="flex items-center justify-between pt-space-xs"><span class="font-label-sm text-label-sm text-outline">FASTAPI RPS: 8,420</span><span class="font-label-sm text-label-sm text-outline">ERR: 0.00%</span></div></div></aside><div class="pl-64"><main class="w-full pt-16 min-h-screen bg-surface px-gutter-lg py-gutter"><div class="flex flex-col w-full">
+<!-- Micro Top Status Scrim & Telemetry Bar -->
+<div class="w-full mb-space-lg flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-outline">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Heap Engine: v17.4-fast</span>
+</div>
+<span class="text-outline-variant font-code-sm text-code-sm">/</span>
+<div class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="text-outline">ROOT HEAP ADDR:</span>
+<span class="text-primary font-bold">0x7FFEE312A090</span>
+</div>
+<span class="text-outline-variant font-code-sm text-code-sm hidden md:inline">/</span>
+<div class="font-code-sm text-code-sm text-on-surface-variant hidden md:flex items-center gap-1.5">
+<span class="text-outline">TOP PRIORITY SCORE:</span>
+<span class="text-primary font-bold">0.99824</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm">
+<span class="px-space-xs py-0.5 bg-surface-container text-outline uppercase font-mono">SOAP Sync: Active</span>
+<span class="px-space-xs py-0.5 bg-surface-container-high text-primary font-mono font-bold">LATENCY 0.38ms</span>
+</div>
+</div>
+<!-- Primary Worksurface Layout: Split View -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-lg items-start w-full">
+<!-- LEFT PANEL: Submit Request (4 Cols on 12-col grid) -->
+<section class="xl:col-span-4 w-full flex flex-col gap-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-md flex flex-col gap-space-lg relative overflow-hidden">
+<!-- Header -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight font-semibold flex items-center gap-space-xs">
+<span>Submit New Request</span>
+</h2>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 bg-surface-container-high text-on-surface-variant rounded">FORM-IN-01</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Requests are triaged, classified, and prioritized through the automated multi-service pipeline.
+          </p>
+</div>
+<!-- Form Elements -->
+<form class="flex flex-col gap-space-md" id="ticketSubmitForm" onsubmit="event.preventDefault(); addNewTicket();">
+<!-- Field 1: Employee ID -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider" for="employeeSelect">
+                Employee ID
+              </label>
+<span class="font-code-sm text-code-sm text-outline">TIER-1 AUTH</span>
+</div>
+<div class="relative w-full">
+<select class="w-full appearance-none bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-space-md py-space-sm pr-9 rounded-lg focus:outline-none focus:bg-surface-container-high transition-colors cursor-pointer" id="employeeSelect">
+<option value="E1023">E1023 — Jane Doe (Engineering)</option>
+<option value="E1024">E1024 — Marcus Vance (Security Ops)</option>
+<option value="E1025">E1025 — Sarah Lin (Product Infrastructure)</option>
+<option value="E1098">E1098 — Dev Relay (Automated Batch)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-space-md text-outline">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Field 2: Issue Title -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider" for="issueTitle">
+                Issue Title
+              </label>
+<span class="font-code-sm text-code-sm text-outline">REQUIRED</span>
+</div>
+<input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm px-space-md py-space-sm rounded-lg focus:outline-none focus:bg-surface-container-high transition-colors" id="issueTitle" placeholder="e.g., Cannot connect to corporate VPN" required="" type="text"/>
+</div>
+<!-- Field 3: Detailed Description -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider" for="issueDesc">
+                Detailed Description
+              </label>
+<span class="font-code-sm text-code-sm text-outline">NLP NLP-EXTRACT</span>
+</div>
+<textarea class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm p-space-md rounded-lg focus:outline-none focus:bg-surface-container-high transition-colors resize-none leading-relaxed" id="issueDesc" placeholder="Describe the issue, symptoms, and urgency signals (e.g., blocking all work immediately)..." required="" rows="4"></textarea>
+</div>
+<!-- Form Submit Action -->
+<button class="w-full mt-space-xs flex items-center justify-center gap-space-sm bg-primary text-on-primary hover:bg-primary-container active:bg-secondary-fixed transition-all duration-100 py-2.5 px-space-lg rounded-lg shadow-sm group cursor-pointer" type="submit">
+<span class="font-label-md text-label-md font-bold tracking-wide uppercase">Submit Request</span>
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 bg-on-primary text-primary rounded group-hover:bg-surface-container-lowest group-hover:text-primary transition-colors flex items-center gap-0.5">
+<span>↵</span>
+<span class="text-[9px]">⌘ENTER</span>
+</span>
+</button>
+</form>
+<!-- System specs sub-card: C++ Heap Priority Rule -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex flex-col gap-space-sm mt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">memory</span>
+              C++ Heap Priority Rule
+            </span>
+<span class="font-code-sm text-code-sm text-outline font-mono">max_heap_t</span>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant leading-snug">
+            Priority score $P$ is computed dynamically via high-performance native binding using strict weights:
+          </p>
+<div class="grid grid-cols-3 gap-space-xs pt-1">
+<div class="bg-surface-container p-space-xs rounded flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-[9px] text-outline uppercase">Category</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">W = 0.40</span>
+</div>
+<div class="bg-surface-container p-space-xs rounded flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-[9px] text-outline uppercase">Urgency</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">W = 0.40</span>
+</div>
+<div class="bg-surface-container p-space-xs rounded flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-[9px] text-outline uppercase">Seniority</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">W = 0.20</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Left Secondary Operational Ingestion Metric -->
+<div class="bg-surface-container-low p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">alt_route</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-bold">Auto-Triage Model</span>
+<span class="font-code-sm text-code-sm text-outline">FastAPI Router: Healthy</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-primary px-space-sm py-1 bg-surface-container rounded font-bold">SYNC: OK</span>
+</div>
+</section>
+<!-- RIGHT PANEL: Operational Queue (8 Cols on 12-col grid) -->
+<section class="xl:col-span-8 w-full flex flex-col gap-space-md">
+<!-- Top Queue Header & Controls -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-start justify-between gap-space-md">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">
+                Operational Queue
+              </h1>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 bg-primary text-on-primary font-bold uppercase rounded" id="queueCounterBadge">
+                4 Active Tickets
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Live queue sorted by C++ max-heap computed priority &amp; arrival
+            </p>
+</div>
+<!-- Refresh Action Button -->
+<div class="flex items-center gap-space-sm">
+<div class="flex flex-col text-right hidden sm:block">
+<span class="font-label-sm text-label-sm text-outline uppercase">Last Sync</span>
+<span class="font-code-sm text-code-sm text-primary font-bold" id="lastSyncTimestamp">Just now</span>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container hover:bg-surface-container-high text-primary rounded-lg transition-colors font-label-md text-label-md cursor-pointer group shadow-sm" id="refreshQueueBtn" onclick="triggerQueueRefresh()" title="Poll latest heap mutations">
+<span class="material-symbols-outlined text-[16px] transition-transform duration-500" id="refreshIcon">refresh</span>
+<span class="font-label-md text-label-md font-bold uppercase">Refresh</span>
+</button>
+</div>
+</div>
+<!-- Filter & Search Bar Strip -->
+<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-sm pt-space-xs">
+<!-- Filter Tabs -->
+<div class="flex items-center gap-1 bg-surface-container-lowest p-1 rounded-lg">
+<button class="ticket-tab active px-space-sm py-1 rounded font-code-sm text-code-sm bg-surface-container-high text-primary font-bold transition-colors" onclick="filterTickets('all')">
+              All (4)
+            </button>
+<button class="ticket-tab px-space-sm py-1 rounded font-code-sm text-code-sm text-outline hover:text-on-surface transition-colors" onclick="filterTickets('pending')">
+              Pending (1)
+            </button>
+<button class="ticket-tab px-space-sm py-1 rounded font-code-sm text-code-sm text-outline hover:text-on-surface transition-colors" onclick="filterTickets('degraded')">
+              Degraded (2)
+            </button>
+<button class="ticket-tab px-space-sm py-1 rounded font-code-sm text-code-sm text-outline hover:text-on-surface transition-colors" onclick="filterTickets('resolved')">
+              Resolved (1)
+            </button>
+</div>
+<!-- Quick Search -->
+<div class="relative flex-1 max-w-xs">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[16px]">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline font-code-sm text-code-sm pl-8 pr-space-md py-1.5 rounded-lg focus:outline-none focus:bg-surface-container transition-colors" id="searchTicketsInput" oninput="handleSearch(this.value)" placeholder="Filter by ID, requester, title..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Queue Stream: The 4 Cards in Exact Reference States -->
+<div class="flex flex-col gap-space-md" id="ticketsContainer">
+<!-- CARD 1: PROCESSED State (Production database outage in US-East) -->
+<article class="ticket-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-lg shadow-sm transition-all duration-150 flex flex-col gap-space-md" data-priority="p1" data-status="processed">
+<!-- Card Header & Badges -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0">database</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight truncate">
+                Production database outage in US-East
+              </h3>
+</div>
+<!-- Badges: Solid P1 and Processed -->
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary text-on-primary font-bold uppercase rounded">
+                P1
+              </span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container-high text-primary uppercase rounded flex items-center gap-1 font-bold">
+<span class="inline-block w-1.5 h-1.5 bg-primary rounded-full"></span>
+                PROCESSED
+              </span>
+</div>
+</div>
+<!-- Metadata Line -->
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-code-sm text-code-sm text-on-surface-variant">
+<span>Requester: <strong class="text-primary font-mono">E1024</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Category: <strong class="text-on-surface font-mono">IT_INFRASTRUCTURE</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Urgency: <strong class="text-primary font-mono">100/100</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Queue Position: <strong class="text-primary font-mono">#1</strong></span>
+</div>
+<!-- Description Text -->
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            Primary database cluster is down and blocking all customer transactions immediately
+          </p>
+<!-- Nested Key-Value Metadata Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs bg-surface-container-lowest p-space-md rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Department</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">Security</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Manager</span>
+<span class="font-code-sm text-code-sm text-primary truncate font-mono">security.lead@company.com</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Request ID</span>
+<span class="font-code-sm text-code-sm text-primary font-mono">f874c99c-e301</span>
+</div>
+</div>
+<!-- Bottom Card Action Button -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-1.5 text-outline font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">bolt</span>
+<span>Direct FastPath dispatched to Tier-3 SRE</span>
+</div>
+<button class="resolve-btn px-space-md py-1.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md rounded font-bold transition-colors cursor-pointer" onclick="markResolved(this)">
+              Mark Resolved
+            </button>
+</div>
+</article>
+<!-- CARD 2: PENDING State (VPN not connecting) -->
+<article class="ticket-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-lg shadow-sm transition-all duration-150 flex flex-col gap-space-md" data-priority="p1" data-status="pending">
+<!-- Card Header & Badges -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0">lan</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight truncate">
+                VPN not connecting
+              </h3>
+</div>
+<!-- Badges: Outline P1 and Dashed PENDING Pill -->
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-primary font-mono font-bold uppercase rounded">
+                P1
+              </span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container-high text-primary uppercase rounded flex items-center gap-1 font-mono">
+<span class="inline-block w-2 h-2 rounded-full border border-primary"></span>
+                PENDING
+              </span>
+</div>
+</div>
+<!-- Metadata Line -->
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-code-sm text-code-sm text-on-surface-variant">
+<span>Requester: <strong class="text-primary font-mono">E1023</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Category: <strong class="text-on-surface font-mono">IT_INFRASTRUCTURE</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Urgency: <strong class="text-primary font-mono">82/100</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Queue Position: <strong class="text-primary font-mono">#1</strong></span>
+</div>
+<!-- Description Text -->
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            Cannot connect to corp VPN since this morning, blocking all work
+          </p>
+<!-- Nested Key-Value Metadata Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs bg-surface-container-lowest p-space-md rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Department</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">Engineering</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Manager</span>
+<span class="font-code-sm text-code-sm text-primary truncate font-mono">manager@company.com</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Request ID</span>
+<span class="font-code-sm text-code-sm text-primary font-mono">67e84829-ba12</span>
+</div>
+</div>
+<!-- Bottom Card Action Button -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-1.5 text-outline font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+<span>In queue for WireGuard peer reset</span>
+</div>
+<button class="resolve-btn px-space-md py-1.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md rounded font-bold transition-colors cursor-pointer" onclick="markResolved(this)">
+              Mark Resolved
+            </button>
+</div>
+</article>
+<!-- CARD 3: PARTIAL / DEGRADED State (Critical payment gateway failure) -->
+<article class="ticket-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-lg shadow-sm transition-all duration-150 flex flex-col gap-space-md" data-priority="p3" data-status="degraded">
+<!-- Card Header & Badges -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0">credit_card</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight truncate">
+                Critical payment gateway failure
+              </h3>
+</div>
+<!-- Badges: P3 and Degradation Pill (STRICT MONOCHROME - NO RED) -->
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-outline uppercase rounded font-mono">
+                P3
+              </span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container-high text-primary uppercase rounded flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+                PARTIAL / DEGRADED
+              </span>
+</div>
+</div>
+<!-- Metadata Line -->
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-code-sm text-code-sm text-on-surface-variant">
+<span>Requester: <strong class="text-primary font-mono">E1025</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Queue Position: <strong class="text-primary font-mono">#3</strong></span>
+</div>
+<!-- Description Text -->
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            Payment processing is down and all charges are failing
+          </p>
+<!-- Nested Key-Value Metadata Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs bg-surface-container-lowest p-space-md rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Department</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">Product</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Manager</span>
+<span class="font-code-sm text-code-sm text-primary truncate font-mono">alice.vp@company.com</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Request ID</span>
+<span class="font-code-sm text-code-sm text-primary font-mono">dae17d7a-9041</span>
+</div>
+</div>
+<!-- Pipeline Degradation Notice Block (Pure Monochrome) -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex items-start gap-space-sm relative">
+<div class="w-1 self-stretch bg-primary rounded-full shrink-0"></div>
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">error_outline</span>
+                Pipeline Degradation Notice:
+              </span>
+<p class="font-code-sm text-code-sm text-on-surface leading-relaxed break-all">
+                Classification failed: I/O error on POST request for "http://localhost:8001/classify": Connection refused: connect;
+              </p>
+</div>
+</div>
+<!-- Bottom Card Action Button -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-1.5 text-outline font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">refresh</span>
+<span>FastAPI endpoint retrying (Backoff: 4s)</span>
+</div>
+<button class="resolve-btn px-space-md py-1.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md rounded font-bold transition-colors cursor-pointer" onclick="markResolved(this)">
+              Mark Resolved
+            </button>
+</div>
+</article>
+<!-- CARD 4: RESOLVED State (Hardware replacement) -->
+<article class="ticket-card bg-surface-container-low opacity-80 hover:opacity-100 rounded-xl p-space-lg shadow-sm transition-all duration-150 flex flex-col gap-space-md" data-priority="p3" data-status="resolved">
+<!-- Card Header & Badges -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-outline text-[20px] shrink-0">desktop_windows</span>
+<h3 class="font-headline-sm text-headline-sm text-primary line-through decoration-outline font-bold tracking-tight truncate">
+                Hardware replacement
+              </h3>
+</div>
+<!-- Badges: P3 muted and Solid RESOLVED pill -->
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container text-outline uppercase rounded font-mono">
+                P3
+              </span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary text-on-primary font-bold uppercase rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                RESOLVED
+              </span>
+</div>
+</div>
+<!-- Metadata Line -->
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-code-sm text-code-sm text-outline">
+<span>Requester: <strong class="text-on-surface font-mono">E1023</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Queue Position: <strong class="text-on-surface font-mono">#2</strong></span>
+</div>
+<!-- Description Text -->
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Monitor stopped turning on
+          </p>
+<!-- Nested Key-Value Metadata Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs bg-surface-container-lowest p-space-md rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Department</span>
+<span class="font-code-sm text-code-sm text-on-surface">Workplace</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Manager</span>
+<span class="font-code-sm text-code-sm text-on-surface truncate font-mono">ops@company.com</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Resolved At</span>
+<span class="font-code-sm text-code-sm text-primary font-mono font-bold">10:42 AM</span>
+</div>
+</div>
+<!-- Bottom Card Footer / Tag -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-1.5 text-outline font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px]">inventory_2</span>
+<span>Archived • Completed in 14m</span>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-1 bg-surface-container-lowest text-outline font-mono uppercase rounded">
+              COMPLETED
+            </span>
+</div>
+</article>
+</div>
+</section>
+</div>
+</div>
+<script>
+  // Filter Tabs Handling
+  function filterTickets(filter) {
+    const cards = document.querySelectorAll('.ticket-card');
+    const tabs = document.querySelectorAll('.ticket-tab');
+
+    tabs.forEach(tab => {
+      tab.classList.remove('bg-surface-container-high', 'text-primary', 'font-bold');
+      tab.classList.add('text-outline');
+    });
+
+    event.currentTarget.classList.add('bg-surface-container-high', 'text-primary', 'font-bold');
+    event.currentTarget.classList.remove('text-outline');
+
+    cards.forEach(card => {
+      const status = card.getAttribute('data-status');
+      if (filter === 'all' || status === filter) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Quick Search Filter
+  function handleSearch(term) {
+    const query = term.toLowerCase().trim();
+    const cards = document.querySelectorAll('.ticket-card');
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      if (text.includes(query)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Refresh Spin Interaction
+  function triggerQueueRefresh() {
+    const icon = document.getElementById('refreshIcon');
+    const syncTime = document.getElementById('lastSyncTimestamp');
+    icon.classList.add('rotate-180');
+    setTimeout(() => {
+      icon.classList.remove('rotate-180');
+      const now = new Date();
+      syncTime.innerText = now.toTimeString().split(' ')[0] + ' UTC';
+    }, 450);
+  }
+
+  // Mark Resolved Interaction
+  function markResolved(btn) {
+    const article = btn.closest('.ticket-card');
+    article.setAttribute('data-status', 'resolved');
+    article.classList.add('opacity-70');
+    btn.innerText = 'Resolved';
+    btn.disabled = true;
+    btn.classList.remove('hover:bg-surface-container-high', 'cursor-pointer');
+    btn.classList.add('bg-surface-container-lowest', 'text-outline');
+  }
+
+  // Form Submission Injection
+  function addNewTicket() {
+    const emp = document.getElementById('employeeSelect').value;
+    const title = document.getElementById('issueTitle').value;
+    const desc = document.getElementById('issueDesc').value;
+
+    if (!title || !desc) return;
+
+    const newCard = document.createElement('article');
+    newCard.className = 'ticket-card bg-surface-container-low hover:bg-surface-container rounded-xl p-space-lg shadow-sm transition-all duration-150 flex flex-col gap-space-md border-l-2 border-primary';
+    newCard.setAttribute('data-status', 'pending');
+    newCard.setAttribute('data-priority', 'p1');
+
+    const randId = Math.random().toString(16).substring(2, 8);
+
+    newCard.innerHTML = `
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+        <div class="flex items-center gap-space-sm min-w-0">
+          <span class="material-symbols-outlined text-primary text-[20px] shrink-0">speed</span>
+          <h3 class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight truncate">${escapeHtml(title)}</h3>
+        </div>
+        <div class="flex items-center gap-space-xs shrink-0">
+          <span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary text-on-primary font-bold uppercase rounded">P1</span>
+          <span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container-high text-primary uppercase rounded flex items-center gap-1 font-mono">
+            <span class="inline-block w-2 h-2 rounded-full border border-primary"></span> PENDING
+          </span>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-space-md gap-y-1 font-code-sm text-code-sm text-on-surface-variant">
+        <span>Requester: <strong class="text-primary font-mono">${escapeHtml(emp)}</strong></span>
+        <span class="text-outline-variant">•</span>
+        <span>Category: <strong class="text-on-surface font-mono">INGESTED_SYS</strong></span>
+        <span class="text-outline-variant">•</span>
+        <span>Urgency: <strong class="text-primary font-mono">94/100</strong></span>
+        <span class="text-outline-variant">•</span>
+        <span>Queue Position: <strong class="text-primary font-mono">#0 (Top)</strong></span>
+      </div>
+      <p class="font-body-md text-body-md text-on-surface leading-relaxed">${escapeHtml(desc)}</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs bg-surface-container-lowest p-space-md rounded-lg">
+        <div class="flex flex-col">
+          <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Department</span>
+          <span class="font-code-sm text-code-sm text-primary font-semibold">Live Pipeline</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Manager</span>
+          <span class="font-code-sm text-code-sm text-primary truncate font-mono">autotriage@company.internal</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Request ID</span>
+          <span class="font-code-sm text-code-sm text-primary font-mono">${randId}...</span>
+        </div>
+      </div>
+      <div class="flex items-center justify-between pt-space-xs">
+        <div class="flex items-center gap-1.5 text-outline font-code-sm text-code-sm">
+          <span class="material-symbols-outlined text-[15px]">auto_mode</span>
+          <span>Max-Heap rebalanced (O(log n) sort)</span>
+        </div>
+        <button onclick="markResolved(this)" class="resolve-btn px-space-md py-1.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md rounded font-bold transition-colors cursor-pointer">
+          Mark Resolved
+        </button>
+      </div>
+    `;
+
+    const container = document.getElementById('ticketsContainer');
+    container.prepend(newCard);
+
+    document.getElementById('issueTitle').value = '';
+    document.getElementById('issueDesc').value = '';
+
+    const counter = document.getElementById('queueCounterBadge');
+    counter.innerText = (document.querySelectorAll('.ticket-card').length) + ' Active Tickets';
+  }
+
+  function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return text.replace(/[&<>"']/g, m => map[m]);
+  }
+</script></main></div></body></html>
