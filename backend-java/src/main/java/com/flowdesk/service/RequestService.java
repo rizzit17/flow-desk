@@ -38,14 +38,21 @@ public class RequestService {
         
         ticketRepository.save(ticket);
 
+        boolean anyFailed = false;
+        StringBuilder errorDetails = new StringBuilder();
+
         try {
             ClassificationClient.ClassificationResponseDto classification = classificationClient.classify(title, description);
             if (classification != null) {
                 ticket.setCategory(classification.getCategory());
                 ticket.setUrgencyScore(classification.getUrgencyScore());
                 ticketRepository.logStep(id, "CLASSIFY", "SUCCESS", "Category: " + classification.getCategory() + ", Urgency: " + classification.getUrgencyScore());
+            } else {
+                throw new RuntimeException("Classification service returned empty response");
             }
         } catch (Exception ex) {
+            anyFailed = true;
+            errorDetails.append("Classification failed: ").append(ex.getMessage()).append("; ");
             ticketRepository.logStep(id, "CLASSIFY", "FAILURE", ex.getMessage());
         }
 
@@ -57,8 +64,12 @@ public class RequestService {
                 ticket.setFinalPriority(priorityResult.getFinalPriority());
                 ticket.setQueuePosition(priorityResult.getQueuePosition());
                 ticketRepository.logStep(id, "PRIORITIZE", "SUCCESS", "Priority: " + priorityResult.getFinalPriority() + ", Queue: " + priorityResult.getQueuePosition());
+            } else {
+                throw new RuntimeException("Priority engine returned empty response");
             }
         } catch (Exception ex) {
+            anyFailed = true;
+            errorDetails.append("Priority calculation failed: ").append(ex.getMessage()).append("; ");
             ticketRepository.logStep(id, "PRIORITIZE", "FAILURE", ex.getMessage());
         }
 
@@ -69,10 +80,22 @@ public class RequestService {
                     ticket.setRequesterDepartment(emp.getDepartment());
                     ticket.setRequesterManagerEmail(emp.getManagerEmail());
                     ticketRepository.logStep(id, "SOAP_ENRICH", "SUCCESS", "Dept: " + emp.getDepartment() + ", Manager: " + emp.getManagerEmail());
+                } else {
+                    throw new RuntimeException("SOAP service returned empty response");
                 }
             }
         } catch (Exception ex) {
+            anyFailed = true;
+            errorDetails.append("HR enrichment failed: ").append(ex.getMessage()).append("; ");
             ticketRepository.logStep(id, "SOAP_ENRICH", "FAILURE", ex.getMessage());
+        }
+
+        if (anyFailed) {
+            ticket.setStatus(RequestStatus.PROCESSING_FAILED.name());
+            ticket.setErrorDetail(errorDetails.toString().trim());
+        } else {
+            ticket.setStatus(RequestStatus.PROCESSED.name());
+            ticket.setErrorDetail(null);
         }
 
         ticketRepository.updateEnrichment(ticket);
