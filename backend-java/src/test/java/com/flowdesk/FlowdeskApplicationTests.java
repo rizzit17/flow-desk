@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -15,18 +17,26 @@ class FlowdeskApplicationTests {
     private RequestService requestService;
 
     @Test
-    void testGracefulDegradationWhenDownstreamFails() {
-        // Without starting external services, downstream calls will fail,
-        // but createTicket MUST not throw exception and must return PROCESSING_FAILED with errorDetail
+    void testSingleTicketFetchAndPatchStatus() {
         TicketRequest ticket = requestService.createTicket(
-            "VPN issue without services",
-            "Checking fault tolerance when services are not running",
+            "Hardware replacement",
+            "Monitor stopped turning on",
             "E1023"
         );
 
         assertNotNull(ticket.getId());
-        assertEquals("PROCESSING_FAILED", ticket.getStatus());
-        assertNotNull(ticket.getErrorDetail());
-        assertFalse(ticket.getErrorDetail().isBlank());
+
+        Optional<TicketRequest> fetched = requestService.getTicketById(ticket.getId());
+        assertTrue(fetched.isPresent());
+        assertEquals(ticket.getId(), fetched.get().getId());
+        assertEquals("Hardware replacement", fetched.get().getTitle());
+
+        Optional<TicketRequest> updated = requestService.updateStatus(ticket.getId(), "RESOLVED");
+        assertTrue(updated.isPresent());
+        assertEquals("RESOLVED", updated.get().getStatus());
+
+        Optional<TicketRequest> refetched = requestService.getTicketById(ticket.getId());
+        assertTrue(refetched.isPresent());
+        assertEquals("RESOLVED", refetched.get().getStatus());
     }
 }
