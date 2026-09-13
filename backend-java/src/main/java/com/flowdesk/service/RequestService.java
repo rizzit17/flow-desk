@@ -13,9 +13,11 @@ import java.util.UUID;
 public class RequestService {
 
     private final TicketRepository ticketRepository;
+    private final ClassificationClient classificationClient;
 
-    public RequestService(TicketRepository ticketRepository) {
+    public RequestService(TicketRepository ticketRepository, ClassificationClient classificationClient) {
         this.ticketRepository = ticketRepository;
+        this.classificationClient = classificationClient;
     }
 
     public TicketRequest createTicket(String title, String description, String requesterId) {
@@ -28,6 +30,19 @@ public class RequestService {
         ticket.setStatus(RequestStatus.PENDING.name());
         
         ticketRepository.save(ticket);
+
+        try {
+            ClassificationClient.ClassificationResponseDto classification = classificationClient.classify(title, description);
+            if (classification != null) {
+                ticket.setCategory(classification.getCategory());
+                ticket.setUrgencyScore(classification.getUrgencyScore());
+                ticketRepository.logStep(id, "CLASSIFY", "SUCCESS", "Category: " + classification.getCategory() + ", Urgency: " + classification.getUrgencyScore());
+            }
+        } catch (Exception ex) {
+            ticketRepository.logStep(id, "CLASSIFY", "FAILURE", ex.getMessage());
+        }
+
+        ticketRepository.updateEnrichment(ticket);
         return ticket;
     }
 

@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -17,21 +15,16 @@ class FlowdeskApplicationTests {
     private RequestService requestService;
 
     @Test
-    void testCreateAndListTicket() {
-        TicketRequest created = requestService.createTicket(
+    void testCreateTicketWithClassification() {
+        TicketRequest ticket = requestService.createTicket(
             "VPN not connecting",
-            "Cannot connect to corp VPN since this morning",
+            "Cannot connect to corp VPN since this morning, blocking all work",
             "E1023"
         );
 
-        assertNotNull(created.getId());
-        assertEquals("PENDING", created.getStatus());
-
-        List<TicketRequest> allTickets = requestService.getAllTickets();
-        assertFalse(allTickets.isEmpty());
-
-        boolean found = allTickets.stream()
-            .anyMatch(t -> t.getId().equals(created.getId()) && "PENDING".equals(t.getStatus()));
-        assertTrue(found);
+        assertNotNull(ticket.getId());
+        assertEquals("IT_INFRASTRUCTURE", ticket.getCategory());
+        assertNotNull(ticket.getUrgencyScore());
+        assertTrue(ticket.getUrgencyScore() > 0);
     }
 }

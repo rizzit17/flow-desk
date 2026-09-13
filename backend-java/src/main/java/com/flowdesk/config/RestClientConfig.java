@@ -9,8 +9,8 @@ import org.springframework.web.client.RestTemplate;
 public class RestClientConfig {
 
     @Bean
-    public RestClient restClient() {
-        return RestClient.create();
+    public RestClient restClient(RestClient.Builder builder) {
+        return builder.build();
     }
 
     @Bean
