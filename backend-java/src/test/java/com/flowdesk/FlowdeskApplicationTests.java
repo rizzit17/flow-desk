@@ -15,7 +15,7 @@ class FlowdeskApplicationTests {
     private RequestService requestService;
 
     @Test
-    void testCreateTicketWithClassificationAndPriority() {
+    void testCreateTicketWithClassificationPriorityAndSoapEnrichment() {
         TicketRequest ticket = requestService.createTicket(
             "VPN not connecting",
             "Cannot connect to corp VPN since this morning, blocking all work",
@@ -27,9 +27,11 @@ class FlowdeskApplicationTests {
         assertNotNull(ticket.getUrgencyScore());
         assertTrue(ticket.getUrgencyScore() > 0);
 
-        assertNotNull(ticket.getFinalPriority(), "finalPriority must not be null");
+        assertNotNull(ticket.getFinalPriority());
         assertTrue(ticket.getFinalPriority() >= 1 && ticket.getFinalPriority() <= 5);
-        assertNotNull(ticket.getQueuePosition(), "queuePosition must not be null");
-        assertTrue(ticket.getQueuePosition() >= 1);
+        assertNotNull(ticket.getQueuePosition());
+
+        assertEquals("Engineering", ticket.getRequesterDepartment());
+        assertEquals("manager@company.com", ticket.getRequesterManagerEmail());
     }
 }

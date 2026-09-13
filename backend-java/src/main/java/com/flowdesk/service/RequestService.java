@@ -15,13 +15,16 @@ public class RequestService {
     private final TicketRepository ticketRepository;
     private final ClassificationClient classificationClient;
     private final PriorityEngineClient priorityEngineClient;
+    private final LegacyHrSoapClient legacyHrSoapClient;
 
     public RequestService(TicketRepository ticketRepository,
                           ClassificationClient classificationClient,
-                          PriorityEngineClient priorityEngineClient) {
+                          PriorityEngineClient priorityEngineClient,
+                          LegacyHrSoapClient legacyHrSoapClient) {
         this.ticketRepository = ticketRepository;
         this.classificationClient = classificationClient;
         this.priorityEngineClient = priorityEngineClient;
+        this.legacyHrSoapClient = legacyHrSoapClient;
     }
 
     public TicketRequest createTicket(String title, String description, String requesterId) {
@@ -57,6 +60,19 @@ public class RequestService {
             }
         } catch (Exception ex) {
             ticketRepository.logStep(id, "PRIORITIZE", "FAILURE", ex.getMessage());
+        }
+
+        try {
+            if (requesterId != null && !requesterId.isBlank()) {
+                LegacyHrSoapClient.EmployeeInfo emp = legacyHrSoapClient.getEmployeeInfo(requesterId);
+                if (emp != null) {
+                    ticket.setRequesterDepartment(emp.getDepartment());
+                    ticket.setRequesterManagerEmail(emp.getManagerEmail());
+                    ticketRepository.logStep(id, "SOAP_ENRICH", "SUCCESS", "Dept: " + emp.getDepartment() + ", Manager: " + emp.getManagerEmail());
+                }
+            }
+        } catch (Exception ex) {
+            ticketRepository.logStep(id, "SOAP_ENRICH", "FAILURE", ex.getMessage());
         }
 
         ticketRepository.updateEnrichment(ticket);
