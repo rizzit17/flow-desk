@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowDesk UI Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#dashboard" aria-label="FlowDesk home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>FlowDesk</span>
+      </a>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a class="active" href="#dashboard"><span class="material-symbols-outlined">home</span>Home</a>
+        <a href="#dashboard"><span class="material-symbols-outlined">confirmation_number</span>Requests</a>
+        <a href="#dashboard"><span class="material-symbols-outlined">bolt</span>Automation</a>
+        <a href="#dashboard"><span class="material-symbols-outlined">bar_chart</span>Reports</a>
+        <a href="#dashboard"><span class="material-symbols-outlined">settings</span>Admin</a>
+      </nav>
+      <div class="top-actions">
+        <div class="stack-chips" aria-label="Technology stack">
+          <span class="outline-chip">Spring Boot</span>
+          <span class="outline-chip">FastAPI</span>
+          <span class="outline-chip">C++ Engine</span>
+          <span class="outline-chip">SOAP Legacy</span>
+        </div>
+        <button class="icon-button" aria-label="Search"><span class="material-symbols-outlined">search</span></button>
+        <button class="icon-button" aria-label="Notifications"><span class="material-symbols-outlined">notifications</span></button>
+        <button class="avatar" aria-label="Account menu">JD</button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <nav aria-label="Workspace navigation">
+          <a class="active" href="#dashboard"><span class="material-symbols-outlined">home</span>Dashboard</a>
+          <a href="#dashboard"><span class="material-symbols-outlined">confirmation_number</span>My Requests</a>
+          <a href="#dashboard"><span class="material-symbols-outlined">group</span>Team Queue</a>
+          <a href="#dashboard"><span class="material-symbols-outlined">bolt</span>Automation</a>
+          <a href="#dashboard"><span class="material-symbols-outlined">menu_book</span>Knowledge Base</a>
+          <a href="#dashboard"><span class="material-symbols-outlined">settings</span>Settings</a>
+        </nav>
+        <div class="health-card">
+          <div class="health-title"><span class="status-dot success"></span>System Healthy</div>
+          <p>All services operational</p>
+        </div>
+      </aside>
+
+      <main class="main-content" id="dashboard">
+        <section class="screen-heading">
+          <div>
+            <p class="eyebrow">DESKTOP / 1440px</p>
+            <h1>Dashboard</h1>
+            <p class="subtitle">Submit a request and monitor automated workflow progress.</p>
+          </div>
+          <div class="last-updated"><span class="material-symbols-outlined">sync</span>Last updated 10:24 AM <span class="status-dot success"></span></div>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel request-panel">
+            <div class="panel-heading">
+              <div class="heading-icon"><span class="material-symbols-outlined">description</span></div>
+              <div><h2>Submit a request</h2><p>Create a new ticket for your team. The request will be routed automatically based on category, urgency and department.</p></div>
+            </div>
+            <form class="request-form">
+              <label><span class="label-row"><span class="material-symbols-outlined">person</span>Requester</span><select><option>Alex Johnson</option><option>Jamie Lee</option></select></label>
+              <label><span class="label-row"><span class="material-symbols-outlined">sell</span>Category</span><select><option>Select category</option><option>Access &amp; Permissions</option><option>Software</option><option>Hardware</option></select></label>
+              <label><span class="label-row"><span class="material-symbols-outlined">warning</span>Urgency</span><select><option>Select urgency</option><option>Low</option><option>Medium</option><option>High</option></select></label>
+              <label><span class="label-row"><span class="material-symbols-outlined">business</span>Department</span><select><option>Select department</option><option>Product</option><option>IT</option><option>Finance</option></select></label>
+              <label><span class="label-row"><span class="material-symbols-outlined">person</span>Manager</span><select><option>Select manager</option><option>Priya Nair</option><option>Daniel Kim</option></select></label>
+              <label><span class="label-row"><span class="material-symbols-outlined">article</span>Description</span><textarea maxlength="2000" placeholder="Please provide a detailed description of your request..."></textarea><span class="character-count">0/2000</span></label>
+              <button class="primary-button" type="submit"><span class="material-symbols-outlined">send</span>Submit request</button>
+            </form>
+          </article>
+
+          <article class="panel queue-panel">
+            <div class="queue-heading">
+              <div class="panel-heading compact"><div class="heading-icon"><span class="material-symbols-outlined">format_list_bulleted</span></div><div><h2>Operational queue</h2><p>Live view of current tickets and automated workflow status.</p></div></div>
+              <div class="filters"><select aria-label="Filter by category"><option>All categories</option></select><select aria-label="Filter by department"><option>All departments</option></select><select aria-label="Filter by status"><option>All statuses</option></select><div class="search-field"><span class="material-symbols-outlined">search</span><input placeholder="Search by request ID, title or requester..." /></div></div>
+            </div>
+            <div class="queue-table" role="table" aria-label="Operational queue">
+              <div class="queue-row queue-header" role="row"><span>Request ID</span><span>Queue Position</span><span>Status</span><span>Priority</span><span></span></div>
+              <div class="queue-row" role="row"><div class="request-id"><span class="row-icon blue"><span class="material-symbols-outlined">laptop_mac</span></span><span><strong>REQ-004328</strong><small>Laptop not starting<br><em>Alex Johnson&nbsp; · &nbsp;IT Support</em></small></span></div><span>#3<small>in queue</small></span><span><span class="status-line"><span class="status-dot success"></span>In Progress</span><small>Assigned to L2 Support</small></span><span class="priority low">Low</span><span class="material-symbols-outlined row-chevron">chevron_right</span></div>
+              <div class="queue-row" role="row"><div class="request-id"><span class="row-icon"><span class="material-symbols-outlined">description</span></span><span><strong>REQ-004327</strong><small>Access to production environment<br><em>Maria Garcia&nbsp; · &nbsp;Engineering</em></small></span></div><span>#5<small>in queue</small></span><span><span class="status-line"><span class="status-dot pending"></span>Pending</span><small>Awaiting approval</small></span><span class="priority medium">Medium</span><span class="material-symbols-outlined row-chevron">chevron_right</span></div>
+              <div class="queue-row" role="row"><div class="request-id"><span class="row-icon"><span class="material-symbols-outlined">shield</span></span><span><strong>REQ-004326</strong><small>Password reset request<br><em>David Kim&nbsp; · &nbsp;Security</em></small></span></div><span>#1<small>in queue</small></span><span><span class="status-line"><span class="status-dot success"></span>In Progress</span><small>Assigned to L1 Support</small></span><span class="priority medium">Medium</span><span class="material-symbols-outlined row-chevron">chevron_right</span></div>
+              <div class="queue-row" role="row"><div class="request-id"><span class="row-icon blue"><span class="material-symbols-outlined">cloud</span></span><span><strong>REQ-004325</strong><small>New software installation<br><em>Sarah Lee&nbsp; · &nbsp;Finance</em></span></div><span>#7<small>in queue</small></span><span><span class="status-line"><span class="status-dot pending"></span>Pending</span><small>Waiting for user details</small></span><span class="priority high">High</span><span class="material-symbols-outlined row-chevron">chevron_right</span></div>
+              <div class="queue-row" role="row"><div class="request-id"><span class="row-icon"><span class="material-symbols-outlined">group</span></span><span><strong>REQ-004324</strong><small>Team access to shared drive<br><em>James Wilson&nbsp; · &nbsp;Operations</em></span></div><span>#2<small>in queue</small></span><span><span class="status-line"><span class="status-dot success"></span>In Progress</span><small>Assigned to L2 Support</small></span><span class="priority low">Low</span><span class="material-symbols-outlined row-chevron">chevron_right</span></div>
+              <div class="queue-row" role="row"><div class="request-id"><span class="row-icon"><span class="material-symbols-outlined">settings</span></span><span><strong>REQ-004323</strong><small>System configuration change<br><em>Priya Nair&nbsp; · &nbsp;IT Operations</em></span></div><span>#6<small>in queue</small></span><span><span class="status-line"><span class="status-dot neutral"></span>Open</span><small>Awaiting assignment</small></span><span class="priority medium">Medium</span><span class="material-symbols-outlined row-chevron">chevron_right</span></div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <section class="states-section" id="ticket-states">
+      <div class="section-heading"><div><p class="eyebrow blue-text">02 —</p><h2>Ticket states</h2></div><p class="eyebrow">COMPONENT REFERENCE / CARD VARIANTS</p></div>
+      <div class="state-grid">
+        <article class="ticket-card pending-card"><div class="ticket-top"><div class="state-label pending-label"><span class="state-icon"><span class="material-symbols-outlined">schedule</span></span>PENDING</div><span class="material-symbols-outlined">more_vert</span></div><h3>FlowDesk Ticket #48271</h3><p class="ticket-summary">Access request for shared Drive folder</p><div class="ticket-details"><dl><dt>REQUEST ID</dt><dd>FD-48271</dd><dt>REQUESTER</dt><dd><span class="material-symbols-outlined">person</span>Alex Carter</dd><dt>CATEGORY</dt><dd><span class="material-symbols-outlined">description</span>Access &amp; Permissions</dd><dt>URGENCY</dt><dd><span class="status-dot pending"></span>Medium</dd><dt>QUEUE POSITION</dt><dd>7</dd><dt>DEPARTMENT</dt><dd><span class="material-symbols-outlined">business</span>Product</dd><dt>MANAGER</dt><dd><span class="material-symbols-outlined">person</span>Priya Nair</dd></dl><div class="description"><dt>DESCRIPTION</dt><p>Requesting access to the shared Drive folder for the Q3 product launch project. Need it by EOD today if possible.</p></div></div></article>
+        <article class="ticket-card processed-card"><div class="ticket-top"><div class="state-label processed-label"><span class="state-icon"><span class="material-symbols-outlined">check_circle</span></span>PROCESSED</div><span class="material-symbols-outlined">more_vert</span></div><h3>FlowDesk Ticket #48302</h3><p class="ticket-summary">Software installation request</p><div class="ticket-details"><dl><dt>REQUEST ID</dt><dd>FD-48302</dd><dt>REQUESTER</dt><dd><span class="material-symbols-outlined">person</span>Jamie Silva</dd><dt>CATEGORY</dt><dd><span class="material-symbols-outlined">settings</span>Software</dd><dt>URGENCY</dt><dd><span class="status-dot blue-dot"></span>Low</dd><dt>QUEUE POSITION</dt><dd>3</dd><dt>DEPARTMENT</dt><dd><span class="material-symbols-outlined">business</span>IT</dd><dt>MANAGER</dt><dd><span class="material-symbols-outlined">person</span>Daniel Kim</dd></dl><div class="description"><dt>DESCRIPTION</dt><p>Please install the latest version of Chrome on my laptop (Asset ID 28376). Thanks!</p></div></div></article>
+        <article class="ticket-card resolved-card"><div class="ticket-top"><div class="state-label resolved-label"><span class="state-icon"><span class="material-symbols-outlined">check_circle</span></span>RESOLVED</div><span class="material-symbols-outlined">more_vert</span></div><h3>FlowDesk Ticket #48196</h3><p class="ticket-summary">Email delivery issue</p><div class="ticket-details"><dl><dt>REQUEST ID</dt><dd>FD-48196</dd><dt>REQUESTER</dt><dd><span class="material-symbols-outlined">person</span>Morgan Lee</dd><dt>CATEGORY</dt><dd><span class="material-symbols-outlined">mail</span>Email</dd><dt>URGENCY</dt><dd><span class="status-dot success"></span>Low</dd><dt>QUEUE POSITION</dt><dd>0</dd><dt>DEPARTMENT</dt><dd><span class="material-symbols-outlined">business</span>Marketing</dd><dt>MANAGER</dt><dd><span class="material-symbols-outlined">person</span>Riley Patel</dd></dl><div class="description"><dt>DESCRIPTION</dt><p>Emails to external recipients were bouncing since this morning. Issue appears to be resolved now. Thanks for the quick help!</p></div></div></article>
+        <article class="ticket-card degraded-card"><div class="ticket-top"><div class="state-label degraded-label"><span class="state-icon"><span class="material-symbols-outlined">info</span></span>PARTIAL / DEGRADED</div><span class="material-symbols-outlined">more_vert</span></div><h3>FlowDesk Ticket #48417</h3><p class="ticket-summary">Report generation timing out</p><div class="inline-alert"><span class="material-symbols-outlined">info</span><span>Some downstream services are delayed. Retry available.</span></div><div class="ticket-details"><dl><dt>REQUEST ID</dt><dd>FD-48417</dd><dt>REQUESTER</dt><dd><span class="material-symbols-outlined">person</span>Taylor Brooks</dd><dt>CATEGORY</dt><dd><span class="material-symbols-outlined">analytics</span>Analytics</dd><dt>URGENCY</dt><dd><span class="status-dot failed"></span>High</dd><dt>QUEUE POSITION</dt><dd>5</dd><dt>DEPARTMENT</dt><dd><span class="material-symbols-outlined">business</span>Finance</dd><dt>MANAGER</dt><dd><span class="material-symbols-outlined">person</span>Sanjay Rao</dd></dl><div class="description"><dt>DESCRIPTION</dt><p>Monthly report is taking longer than expected to generate. Partial data available (84%). Will retry in 15 minutes.</p></div></div></article>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
